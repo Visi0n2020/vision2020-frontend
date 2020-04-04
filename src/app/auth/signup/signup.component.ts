@@ -32,14 +32,12 @@ export class SignupComponent implements OnInit {
   );
 
   constructor(
-    private authService: AuthService,
-    private router: Router) { }
+    private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
    onSubmit() {
-     console.log(this.authForm.value)
     if (this.authForm.invalid) {
       return;
     }
@@ -52,7 +50,7 @@ export class SignupComponent implements OnInit {
         if (!err.status) {
           this.authForm.setErrors({ noConnection: true });
         } else {
-          this.authForm.setErrors({ unknownError: true });
+          this.authForm.setErrors({ emailTaken: true });
         }
       }
     });

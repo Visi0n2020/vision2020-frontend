@@ -4,11 +4,11 @@ import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 interface SignupResponse {
-  username: string;
+  email: string;
 }
 
-interface SignupCredentials {
-  username: string;
+interface Credentials {
+  email: string;
   password: string;
 }
 
@@ -18,18 +18,30 @@ interface SignupCredentials {
 export class AuthService {
   rootUrl = 'http://localhost:3000';
   signedin$ = new BehaviorSubject(null);
-  username = '';
+  email = '';
 
   constructor(private http: HttpClient) {}
 
-  signup(credentials: SignupCredentials) {
+  signup(credentials: Credentials) {
     return this.http
       .post<SignupResponse>(`${this.rootUrl}/users/signup`, credentials)
       .pipe(
-        tap(({ username }) => {
+        tap(({ email }) => {
           this.signedin$.next(true);
-          this.username = username;
+          this.email = email;
         })
       );
   }
+
+  signin(credentials: Credentials) {
+    return this.http
+      .post<SignupResponse>(`${this.rootUrl}/users/login`, credentials)
+      .pipe(
+        tap(({ email }) => {
+          this.signedin$.next(true);
+          this.email = email;
+        })
+      );
+  }
+
 }

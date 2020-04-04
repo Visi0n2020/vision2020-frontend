@@ -17,6 +17,18 @@
                type="password" />
       </mat-form-field>
 
+    <div
+      *ngIf="authForm.get('password').touched && authForm.errors"
+      class="ui red basic label"
+    >
+      <p *ngIf="authForm.errors.noConnection">
+        No internet connection detected, failed to sign up
+      </p>
+      <p *ngIf="authForm.errors.emailTaken">
+        A user with that email already exists
+      </p>
+    </div>
+
       <button mat-button type="submit"
       class="mat-raised-button mat-primary"> Register</button>
 
