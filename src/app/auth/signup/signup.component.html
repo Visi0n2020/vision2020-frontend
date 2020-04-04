@@ -1,1 +1,24 @@
 <p>signup works!</p>
+  <form (ngSubmit)="onSubmit()" class="ui form" [formGroup]="authForm">
+    <div class="form-container">
+
+      <mat-form-field>
+        <input id="email"
+               matInput
+               formControlName="email"
+               placeholder="Enter your email" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input id="password"
+               matInput
+               formControlName="password"
+               placeholder="Enter your password"
+               type="password" />
+      </mat-form-field>
+
+      <button mat-button type="submit"
+      class="mat-raised-button mat-primary"> Register</button>
+
+    </div>
+  </form>

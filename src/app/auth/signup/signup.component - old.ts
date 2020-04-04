@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -11,35 +10,34 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
-
   authForm = new FormGroup(
     {
-      email: new FormControl(
+      username: new FormControl(
         '',
         [
           Validators.required,
           Validators.minLength(3),
           Validators.maxLength(20),
-          Validators.email
+          Validators.pattern(/^[a-z0-9]+$/)
         ],
       ),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(20)
-      ])
+      ]),
     },
   );
 
   constructor(
     private authService: AuthService,
-    private router: Router) { }
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
-   onSubmit() {
-     console.log(this.authForm.value)
+  onSubmit() {
     if (this.authForm.invalid) {
       return;
     }
