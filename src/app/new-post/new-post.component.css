@@ -1,0 +1,14 @@
+mat-form-field,
+textarea {
+  width: 100%;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+mat-raised-button {
+  margin: 10px;
+  padding: 5px;
+}
+

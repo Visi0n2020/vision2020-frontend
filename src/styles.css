@@ -1,4 +1,100 @@
-/* You can add global styles to this file, and also import other style files */
 
+
+.form-button {
+  margin: 15px !important;
+}
+
+html{background-color:  #1a237e}
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.icon-money {
+  color: green;
+  /* margin-top: 5px; */
+}
+
+.post-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-right: 10px;
+}
+
+.left-excluding-hr {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.left-above-image {
+   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-image {
+  width: 60px;
+}
+
+.headlines {
+  margin-bottom: -16px;
+  font-size: 25px;
+  font-family: Impact, sans-serif;
+}
+
+.headlines-hr {
+display: block;
+height: 1px;
+border: 0;
+border-top: 3px solid #1a237e;
+margin: 1em 0;
+padding: 0;
+}
+
+.hr-above-post {
+  display: block;
+height: 1px;
+border: 0;
+border-top: 3px solid #1a237e;
+margin: 3em 3;
+padding: 0;
+}
+
+.vr-post {
+    border-left: 3px solid #1a237e;
+    margin-top: -1px;
+}
+
+.post-left-part {
+  width: 35%;
+  height: 35%;
+
+}
+
+.post-content {
+  padding-left: 10px;
+  max-height: 256px;
+}
+
+.main-centered-content {
+  margin: auto;
+  justify-content: center;
+  width: 80%;
+  padding: 40px;
+}
+
+.post-centered-content {
+  margin: auto;
+  justify-content: center;
+  width: 80%;
+  padding-top:165px;
+
+}
+
+.auth-centered-content {
+  margin: auto;
+  justify-content: center;
+  width: 50%;
+  padding-top: 15%;
+}

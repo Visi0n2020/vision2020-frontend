@@ -1,1 +1,90 @@
-<p>home works!</p>
+
+  <mat-toolbar class="toolbar mat-elevation-z24">
+      <a routerLink="/">
+        <img  class="logo-image" src="./assets/newglasses.png"/></a>
+        <button class="logout-button" mat-button (click)="onLogout()">Logout</button>
+  </mat-toolbar>
+    <br>
+    <br>
+
+<mat-card class="home-card mat-elevation-z24">
+  <section>
+    <div class="headlines mat-h2 mat-elevation-z12">
+      Lists
+        <button *ngIf="lists.length!=0 && selectedListId" mat-button class="buttons" color="warn"
+        (click)="onDeleteList(this.selectedListId)">
+          <mat-icon class="mat-icon">delete_forever</mat-icon>
+        </button>
+        <button mat-button color="primary" class="buttons"
+        routerLink="/new-list">
+            <mat-icon class="mat-icon">fiber_new</mat-icon>
+        </button>
+    </div>
+
+    <div class="headlines-hr"></div>
+    <nav mat-tab-nav-bar class="below-hr">
+      <a mat-tab-link  animationDuration="1000ms"
+         *ngFor="let list of lists"
+         [routerLink]="['/lists', list._id]"
+         routerLinkActive #rla="routerLinkActive"
+         [active]="rla.isActive">
+        {{list.title}}
+      </a>
+    </nav>
+  </section>
+
+</mat-card>
+<br>
+<br>
+
+<mat-card class="home-card mat-elevation-z24">
+  <section>
+    <div class="headlines mat-h2 mat-elevation-z12">
+     Posts
+     <button mat-button class="buttons" color="warn"
+        (click)="onDeletePost(selectedPostId)">
+        <mat-icon class="mat-icon">delete_forever</mat-icon>
+    </button>
+    <a mat-button class="buttons" color="primary"
+        *ngIf="lists.length!=0 && selectedListId"
+        [routerLink]="['/lists', selectedListId, 'new-post']"
+        routerLinkActive="mat-accent">
+        <mat-icon class="mat-icon">fiber_new</mat-icon>
+    </a>
+    <a mat-button class="buttons" color="primary"
+        [routerLink]="['/lists/edit', selectedListId, selectedPostId]">
+        <mat-icon class="mat-icon">edit</mat-icon>
+    </a>
+    </div>
+    <div class="headlines-hr"></div>
+    <mat-tab-group *ngIf="lists.length!=0" class="posts-tab-group" #tabGroup (selectedTabChange)="onPostSelect(tabGroup.selectedIndex)" class="below-hr"  animationDuration="1000ms" dynamicHeight>
+      <mat-tab *ngFor="let post of posts">
+        <div class="hr-above-post">
+          </div>
+
+        <ng-template mat-tab-label>{{post.title}}</ng-template>
+        <div>
+          <div class="post-layout">
+            <div class="post-left-part">
+              <div class="left-excluding-hr">
+                  <img class="post-left-part" [src]="post.imageLink" [alt]="post.title">
+              </div>
+            </div>
+               <div class="vr-post"></div>
+               <div class="post-content" style="white-space:pre-wrap;">
+                 <br>
+                 price:
+                 {{post.price}}
+                 <br/>
+                 <br/>
+                 {{post.content}}
+              </div>
+          </div>
+          </div>
+      </mat-tab>
+
+    </mat-tab-group>
+
+  </section>
+
+</mat-card>

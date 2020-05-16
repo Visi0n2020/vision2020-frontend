@@ -3,11 +3,16 @@ import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { Subject } from "rxjs";
 
+import { environment } from "../../environments/environment";
+
+const BACKEND_URL = environment.apiUrl;
+
 
 interface AuthData {
   email: string;
   password: string;
 }
+
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
@@ -38,7 +43,7 @@ export class AuthService {
   createUser(email: string, password: string) {
     const authData: AuthData = { email: email, password: password };
     this.http
-      .post("http://localhost:3000/users/signup", authData)
+      .post(BACKEND_URL + "/users/signup", authData)
       .subscribe(() => {
         this.router.navigate(["/"]);
       }, error => {
@@ -50,7 +55,7 @@ export class AuthService {
     const authData: AuthData = { email: email, password: password };
     this.http
       .post<{ token: string; expiresIn: number; userId: string }>(
-        "http://localhost:3000/users/login",
+        BACKEND_URL + "/users/login",
         authData
       )
       .subscribe(response => {
@@ -66,7 +71,6 @@ export class AuthService {
           const expirationDate = new Date(
             now.getTime() + expiresInDuration * 1000
           );
-          console.log(expirationDate);
           this.saveAuthData(token, expirationDate, this.userId);
           this.router.navigate(["/"]);
         }
@@ -102,7 +106,6 @@ export class AuthService {
   }
 
   private setAuthTimer(duration: number) {
-    console.log("Setting timer: " + duration);
     this.tokenTimer = setTimeout(() => {
       this.logout();
     }, duration * 1000);

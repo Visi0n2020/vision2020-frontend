@@ -1,0 +1,130 @@
+
+
+::ng-deep .mat-tab-label-active{
+ color: rgb(0, 0, 0) !important;
+ background-color: #FFC107;
+}
+
+.mat-tab-group {
+  width: 1200px;
+}
+
+
+
+::ng-deep .mat-ink-bar {
+  display: none !important;
+  visibility: hidden !important;
+  transition: none !important;
+  height: 0px !important;
+  width: 0px !important;
+}
+
+.logout-button {
+  color: black;
+}
+
+
+.home-card {
+  margin: 20px;
+  background-color: whitesmoke;
+  padding: 0px;
+}
+
+.toolbar {
+  background-color: rgb(186, 209, 224);
+  color: whitesmoke;
+  justify-content: space-between;
+}
+
+
+.tab-link {
+  color: black;
+}
+
+.buttons {
+  float: right;
+}
+
+.container {
+  margin: auto;
+  margin-top: 5%;
+  max-width: 90%;
+}
+
+.is-active {
+  background-color: rgb(226, 174, 17);
+  color: black;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  display: flex;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+
+.tabs-list {
+  margin: 15px;
+  background-color: #c5cbe9;
+}
+
+.post-panel {
+  margin: 50px;
+}
+
+.example-container {
+  width: 400px;
+  height: 200px;
+  margin: 10px;
+  border: 1px solid #555;
+}
+
+.example-action-button {
+  margin-top: 8px;
+  margin-right: 8px;
+}
+
+.task-manager-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+    max-height: 680px;
+}
+
+.sidebar {
+  margin: -1.1em;
+  margin-left: -1.15em;
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  background: rgba(219, 225, 231, 0.822);
+  padding: 20px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.task-list-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 42px;
+
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.below-hr {
+  margin: -1em 0;
+  width: 100%;
+  color: black;
+}
