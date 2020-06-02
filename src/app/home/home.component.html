@@ -8,10 +8,11 @@
     <br>
 
 <mat-card class="home-card mat-elevation-z24">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
   <section>
     <div class="headlines mat-h2 mat-elevation-z12">
       Lists
-        <button *ngIf="lists.length!=0 && selectedListId" mat-button class="buttons" color="warn"
+        <button *ngIf="lists.length!=0 && selectedListId && !isLoading" mat-button class="buttons" color="warn"
         (click)="onDeleteList(this.selectedListId)">
           <mat-icon class="mat-icon">delete_forever</mat-icon>
         </button>
@@ -57,7 +58,7 @@
     </a>
     </div>
     <div class="headlines-hr"></div>
-    <mat-tab-group *ngIf="lists.length!=0" class="posts-tab-group" #tabGroup (selectedTabChange)="onPostSelect(tabGroup.selectedIndex)" class="below-hr"  animationDuration="1000ms" dynamicHeight>
+    <mat-tab-group *ngIf="lists.length!=0 && !isLoading" class="posts-tab-group" #tabGroup [selectedIndex]="0" (selectedTabChange)="onPostSelect(tabGroup.selectedIndex)" class="below-hr"  animationDuration="1000ms" dynamicHeight>
       <mat-tab *ngFor="let post of posts">
         <div class="hr-above-post">
           </div>

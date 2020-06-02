@@ -53,9 +53,13 @@ export class HomeComponent implements OnInit, OnDestroy {
           this.selectedListId = params.listId;
           this.postsService.getPosts(this.selectedListId).subscribe((posts: Post[]) => {
             this.posts = posts;
+            if (this.posts.length!=0)
+              this.selectedPostId = this.posts[0]._id;
+
           })
-        } else {
-          this.posts = [];
+            if (params.postId) {
+                this.selectedPostId = params.postId;
+            }
         }
       }
     )
@@ -69,19 +73,26 @@ export class HomeComponent implements OnInit, OnDestroy {
   onDeletePost(postId: string) {
     this.isLoading = true;
     this.postsService.deletePost(this.selectedListId ,postId).subscribe(() => {
-    }, () => {
+      this.isLoading = true;
+      this.postsService.getPosts(this.selectedListId).subscribe((posts: Post[]) => {
+        this.isLoading = true;
+        this.posts = posts;
+        this.isLoading = false;
+        if (this.posts.length!=0) {
+          this.selectedPostId = this.posts[0]._id;
+          }
+        this.router.navigate([ '/lists', this.selectedListId]);
+      })
+      // this.posts = this.posts.filter(val => val._id !== this.selectedPostId);
+      // this.isLoading = false;
     });
-    this.postsService.getPosts(this.selectedListId).subscribe((posts: Post[]) => {
-      this.posts = posts;
-    })
     this.isLoading = false;
-
+    this.router.navigate([ '/lists', this.selectedListId]);
   }
 
   onDeleteList(postId: string) {
     this.isLoading = true;
     this.postsService.deleteList(this.selectedListId).subscribe(() => {
-      this.isLoading = false;
       this.lists = this.lists.filter(val => val._id !== this.selectedListId);
     }, () => {
     });

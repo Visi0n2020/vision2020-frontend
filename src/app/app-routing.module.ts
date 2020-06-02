@@ -17,6 +17,7 @@ const routes: Routes = [
    { path: "login", component: LoginComponent },
    { path: "signup", component: SignupComponent },
    { path: 'lists/:listId', component: HomeComponent, canActivate: [AuthGuard] },
+   { path: 'lists/:listId/:postId', component: HomeComponent, canActivate: [AuthGuard] },
     {path: '**', redirectTo: '/'}
 ];
 
